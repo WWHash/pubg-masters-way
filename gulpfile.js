@@ -10,7 +10,7 @@ import pug from './gulp/compilePug.mjs';
 
 const server = browserSync.create();
 const streamStyles = () => styles().pipe(server.stream());
-const clean = () => del('build');
+const clean = () => del('public');
 const refresh = (done) => {
   server.reload();
   done();
@@ -18,7 +18,7 @@ const refresh = (done) => {
 
 const syncServer = () => {
   server.init({
-    server: 'build/',
+    server: 'public/',
     index: 'sitemap.html',
     notify: false,
     open: true,
