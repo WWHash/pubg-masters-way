@@ -25,7 +25,7 @@ const sprite = () =>
       .src('source/img/sprite/*.svg')
       .pipe(svgstore({inlineSvg: true}))
       .pipe(rename('sprite_auto.svg'))
-      .pipe(gulp.dest('public/img'));
+      .pipe(gulp.dest('build/img'));
 
 /*
   Optional tasks
@@ -48,13 +48,13 @@ const createWebp = () => {
 
 const optimizeImages = () =>
   gulp
-      .src('public/img/**/*.{png,jpg}')
+      .src('build/img/**/*.{png,jpg}')
       .pipe(
           imagemin([
             imagemin.optipng({optimizationLevel: 3}),
             imagemin.mozjpeg({quality: 75, progressive: true})
           ])
       )
-      .pipe(gulp.dest('public/img'));
+      .pipe(gulp.dest('build/img'));
 
 export {svgo, sprite, createWebp, optimizeImages};
